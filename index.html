@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournoi Mixte Parfait et Palmarès</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <header>
+        <h1>🏆 Mon Tournoi en 1 vs 1 🥇</h1>
+    </header>
+
+    <main>
+        <section class="gestion-participants card">
+            <h2>1. Gestion et Catégorisation des Participantes/Participants</h2>
+            
+            <div class="input-group">
+                <input type="text" id="nomParticipant" placeholder="Nom du participant(e)">
+                <select id="categorieParticipant">
+                    </select>
+                <select id="genreParticipant">
+                    <option value="F">Fille</option>
+                    <option value="M">Garçon</option>
+                </select>
+                <button onclick="ajouterParticipant()">Ajouter</button>
+            </div>
+            
+            <button onclick="reinitialiserParticipants()">Réinitialiser la liste par défaut</button>
+            
+            <hr>
+            
+            <div class="filtres">
+                <div class="filtre-section">
+                    <h3>Filtrer par Service :</h3>
+                    <div id="filtreCheckboxContainerCategorie">
+                        </div>
+                </div>
+                
+                <div class="filtre-section">
+                    <h3>Filtrer par Genre :</h3>
+                    <div id="filtreCheckboxContainerGenre">
+                        </div>
+                </div>
+            </div>
+
+            <ul id="participantsList" class="liste-edition">
+                </ul>
+        </section>
+
+        <section class="bracket-tournoi card">
+            <h2>2. Contrôles du Tournoi</h2>
+            <div id="tournoiControles">
+                </div>
+            
+            <p id="vainqueurMessage">Appuyez sur "Démarrer le Tournoi" pour commencer !</p>
+            
+            <div id="podiumSection" style="display:none; margin-top: 40px;">
+                <h3 style="text-align: center; color: var(--color-text); border-bottom: 2px dashed #ddd; padding-bottom: 10px;">Le Palmarès 🏆</h3>
+                <div class="podium-container">
+                    <div class="place second-place">
+                        <span class="position">2ème</span>
+                        <span class="nom" id="secondPlace"></span>
+                    </div>
+                    <div class="place first-place">
+                        <span class="position">1er</span>
+                        <span class="nom" id="firstPlace"></span>
+                    </div>
+                    <div class="place third-fourth-place">
+                        <span class="position">3ème/4ème</span>
+                        <span class="nom" id="thirdFourthPlace"></span>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+        <section class="historique-tournoi">
+            <h2>
+                3. Historique des Tours 
+                <button id="toggleHistorique" onclick="toggleHistorique()">Afficher l'historique ▼</button>
+            </h2>
+            <div id="historiqueContainer" style="display: none;">
+                <p>Aucun tour joué pour l'instant.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script> 
+</body>
+</html>

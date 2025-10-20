@@ -1,0 +1,371 @@
+:root {
+    /* Palettes Pastels */
+    --color-primary: #8cb9de; 
+    --color-secondary: #f0f8ff; 
+    --color-accent: #f8c8dc; 
+    --color-success: #a0d8b3; 
+    --color-danger: #ffb8b8; 
+    --color-text: #3c3c54;
+    --color-shadow: rgba(0, 0, 0, 0.08);
+
+    /* Couleurs spécifiques aux catégories pour les badges */
+    --cat-infopromo: #b8e0d4; 
+    --cat-videaste: #ffd3b5; 
+    --cat-graphiste: #d6e0f0; 
+    --cat-communication: #f8e8a6; 
+    --cat-digital: #c7d8ed; 
+    --cat-tous: #a9e0c1; 
+    
+    /* Couleurs genre */
+    --genre-f: #f8c8dc; /* Rose clair (Accent) */
+    --genre-m: #a9e0c1; /* Vert clair (Tous) */
+    --genre-mixte: #e0e0e0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px var(--color-shadow);
+}
+header h1 {
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--color-shadow);
+    border-left: 5px solid var(--color-primary);
+}
+
+/* Formulaires et contrôles */
+input[type="text"], select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--color-success);
+    color: var(--color-text);
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 12px 18px; 
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: #92ccac;
+    transform: translateY(-1px);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 20px 0;
+}
+
+/* Liste des participantes en mode édition */
+.liste-edition {
+    list-style: none;
+    padding: 0;
+}
+.liste-edition li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px dashed #eee;
+    background-color: #f7f7fa;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+.liste-edition li span strong {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+/* --- CORRECTION MAJEURE DES STYLES DE MATCH --- */
+.liste-match {
+    list-style: none;
+    padding: 0;
+}
+.liste-match li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid var(--color-primary);
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteneur principal d'un joueur dans le match */
+.match-participant {
+    /* Rétablit l'alignement des éléments de joueur */
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; /* Pour séparer nom/service et zone de vote */
+    width: 100%; /* Prend toute la largeur disponible dans le wrapper */
+}
+
+/* Wrapper pour aligner Nom/Service */
+.match-info {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+}
+.match-info.right-align {
+    align-items: flex-end; 
+    text-align: right;
+}
+
+.match-participant .nom {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: var(--color-text);
+}
+.match-participant .service {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* Alignement des 3 grandes parties (Joueur 1, VS, Joueur 2) */
+.match-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%; /* Donne de l'espace à chaque joueur */
+}
+.match-wrapper.right-side {
+    justify-content: flex-end; /* Aligne le joueur 2 à droite */
+}
+
+.vs {
+    font-weight: 900;
+    color: var(--color-danger);
+    font-size: 1.5em;
+    margin: 0 10px;
+    flex-shrink: 0;
+}
+.vote-area {
+    margin-left: 10px; /* Espace le bouton du nom/service */
+    margin-right: 0;
+}
+/* Styles de résultat (Vert/Gris) */
+.vainqueur {
+    color: white !important;
+    background-color: var(--color-success);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold !important;
+    display: inline-block; 
+}
+
+.perdant {
+    color: var(--color-text) !important;
+    background-color: #e9ecef;
+    padding: 4px 8px;
+    border-radius: 4px;
+    opacity: 0.7;
+    display: inline-block;
+}
+
+.score-result {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.vote-btn {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+/* Bouton de suppression et Réinitialisation */
+.delete-btn, #tournoiControles button[onclick="reinitialiserParticipants()"] {
+    background-color: var(--color-danger); 
+    color: white;
+}
+.delete-btn:hover, #tournoiControles button[onclick="reinitialiserParticipants()"]:hover {
+    background-color: #f0a0a0;
+}
+
+/* Message Vainqueur Final */
+#vainqueurMessage {
+    background: linear-gradient(90deg, #fff, var(--color-accent), #fff);
+    color: var(--color-text);
+    border: 2px dashed var(--color-primary);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 1.4em;
+    font-weight: 900;
+    margin-top: 20px;
+}
+
+/* --- Styles des Filtres Checkbox (Badges) --- */
+.filtres {
+    margin-top: 20px;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    display: flex; 
+    gap: 30px;
+}
+.filtre-section {
+    flex: 1; 
+}
+
+#filtreCheckboxContainerCategorie, #filtreCheckboxContainerGenre {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 8px; 
+    margin-top: 10px;
+}
+
+/* Cache la checkbox native */
+#filtreCheckboxContainerCategorie input[type="checkbox"], 
+#filtreCheckboxContainerGenre input[type="checkbox"] {
+    display: none; 
+}
+
+/* Style de base des badges (labels) */
+#filtreCheckboxContainerCategorie label,
+#filtreCheckboxContainerGenre label {
+    cursor: pointer;
+    padding: 6px 12px; 
+    border-radius: 20px; 
+    font-size: 0.85em; 
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid transparent; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    color: var(--color-text);
+    background-color: #e9ecef; 
+}
+
+/* Couleurs des badges par genre (pour le côté esthétique) */
+#filtre-F + label { background-color: var(--genre-f); }
+#filtre-M + label { background-color: var(--genre-m); }
+#filtre-TousGenre + label { background-color: var(--genre-mixte); }
+
+/* Couleurs des badges par catégorie (inchangé) */
+#filtre-TousCategorie + label { background-color: var(--cat-tous); }
+#filtre-Infopromo + label { background-color: var(--cat-infopromo); }
+#filtre-Vidéaste + label { background-color: var(--cat-videaste); }
+#filtre-Graphiste + label { background-color: var(--cat-graphiste); }
+#filtre-Communication + label { background-color: var(--cat-communication); }
+#filtre-Digital + label { background-color: var(--cat-digital); }
+
+/* Style quand la checkbox est cochée */
+#filtreCheckboxContainerCategorie input[type="checkbox"]:checked + label,
+#filtreCheckboxContainerGenre input[type="checkbox"]:checked + label {
+    border-color: var(--color-primary); 
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-1px); 
+    color: #3c3c54; 
+}
+#filtreCheckboxContainer label:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+.filtres h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--color-text);
+}
+
+/* --- Styles du Podium Final --- */
+.podium-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 30px;
+    gap: 15px;
+}
+.place {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+    padding: 15px 10px 10px;
+    box-shadow: 0 4px 10px var(--color-shadow);
+    min-width: 130px;
+    height: 80px; 
+    color: var(--color-text);
+    transition: all 0.3s;
+}
+.place .position {
+    font-size: 1.3em;
+    font-weight: 900;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.place .nom {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-text);
+}
+.first-place {
+    height: 160px;
+    background: linear-gradient(to top, #ffcc00, #fff7a1); 
+    border: 3px solid #ffcc00;
+    order: 2;
+}
+.second-place {
+    height: 120px;
+    background: linear-gradient(to top, #c0c0c0, #e8e8e8); 
+    border: 3px solid #c0c0c0;
+    order: 1;
+}
+.third-fourth-place {
+    height: 90px; 
+    background: linear-gradient(to top, #cd7f32, #f3c28c); 
+    border: 3px solid #cd7f32;
+    order: 3;
+}
+.third-fourth-place .nom {
+    font-size: 0.9em; 
+}
